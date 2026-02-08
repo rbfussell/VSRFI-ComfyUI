@@ -1,0 +1,29 @@
+# Core dependencies
+opencv-python
+pillow
+PyYAML
+scipy
+
+# ComfyUI integration
+huggingface_hub
+
+# FlashVSR dependencies
+einops
+safetensors
+tqdm
+
+# Triton - Required for fast sparse attention (SparseSageAttention)
+# If Triton is unavailable, the node will fall back to PyTorch native attention
+triton; platform_system!="Windows"
+
+# GIMM-VFI dependencies
+timm
+omegaconf
+yacs
+easydict
+
+# CuPy - GPU-accelerated array library for GIMM-VFI frame interpolation
+# IMPORTANT: You must install the version matching your CUDA version manually:
+#   CUDA 11.x: pip install cupy-cuda11x
+#   CUDA 12.x: pip install cupy-cuda12x
+# Check your CUDA version with: nvcc --version
