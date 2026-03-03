@@ -341,7 +341,7 @@ class VSRFINode:
             '-vcodec', 'rawvideo',
             '-pix_fmt', 'rgb24',
             '-s', f'{out_w}x{out_h}',
-            '-r', str(fps * interp_factor),
+            '-r', str(fps * max(1, interp_factor)),
             '-i', '-',
             '-c:v', 'libx264',
             '-preset', 'medium',

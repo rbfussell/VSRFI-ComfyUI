@@ -20,14 +20,20 @@ except Exception:
 
 try:
     import flash_attn_interface
+    if not callable(getattr(flash_attn_interface, 'flash_attn_func', None)):
+        raise ImportError("flash_attn_interface.flash_attn_func is not callable (CUDA extension may not be compiled for this GPU/CUDA version)")
     FLASH_ATTN_3_AVAILABLE = True
-except Exception:
+except Exception as e:
+    print(f"[VSRFI] FlashAttention-3 not available: {e}")
     FLASH_ATTN_3_AVAILABLE = False
 
 try:
     import flash_attn
+    if not callable(getattr(flash_attn, 'flash_attn_func', None)):
+        raise ImportError("flash_attn.flash_attn_func is not callable (CUDA extension may not be compiled for this GPU/CUDA version)")
     FLASH_ATTN_2_AVAILABLE = True
-except Exception:
+except Exception as e:
+    print(f"[VSRFI] FlashAttention-2 not available: {e}")
     FLASH_ATTN_2_AVAILABLE = False
 
 try:
